@@ -77,7 +77,6 @@ export default {
       operationIndex: 0,
       operationName: "",
       editDialog: false,
-
       editMsg: {
         name: "",
         describe: ""

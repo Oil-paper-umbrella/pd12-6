@@ -26,12 +26,13 @@ export default {
   },
   methods: {
     oneModulePieCharts(data) {
+      let opPieFnc = new optionPieFun(data);
       this.myChart = new optionPublicFun().init("one-module-container");
       this.myChart.setOption({
         color: colors,
-        tooltip: new optionPieFun(data).firstPieTooltip("bold", 14,"second"),
-        legend: new optionPieFun(data).firstPieLegend("bold", 14, "13%"),
-        series: new optionPieFun(data).firstPieSeries("second")
+        tooltip: opPieFnc.firstPieTooltip("bold", 14,"second"),
+        legend: opPieFnc.firstPieLegend("bold", 14, "13%"),
+        series: opPieFnc.firstPieSeries("second")
       });
     }
   }

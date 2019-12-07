@@ -12,7 +12,6 @@ let slashNum = function(data){
   return num;
 }
 
-
 let comFunc ={//所有方法的集合
   slashNum, //获取路由中 / 的个数
 }

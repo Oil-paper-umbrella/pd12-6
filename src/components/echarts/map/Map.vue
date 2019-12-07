@@ -187,9 +187,10 @@ export default {
   methods: {
     mapCharts() {
       this.myChart = new optionPublicFun().init("map-container");
+      let opMapFnc = new optionMapFun();
       this.myChart.setOption({
-        tooltip: new optionMapFun().mapTooltip(),
-        series: new optionMapFun().mapSeries(this.datas)
+        tooltip: opMapFnc.mapTooltip(),
+        series: opMapFnc.mapSeries(this.datas)
       });
     }
   }

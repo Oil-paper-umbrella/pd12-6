@@ -50,20 +50,21 @@ export default {
     // pie 数据渲染
     fourModulesPieCharts(data) {
       let pieObj = this.pieLgendStyle;
+      let opPieFnc = new optionPieFun(data);
       this.myChart = new optionPublicFun().init("four-modules-container");
       this.myChart.setOption({
-        tooltip: new optionPieFun(data).firstPieTooltip(
+        tooltip: opPieFnc.firstPieTooltip(
           pieObj.weight,
           pieObj.size,
           "first"
         ),
-        legend: new optionPieFun(data).firstPieLegend(
+        legend: opPieFnc.firstPieLegend(
           pieObj.weight,
           pieObj.size,
           pieObj.legendRight
         ),
         color: colors,
-        series: new optionPieFun(data).firstPieSeries("first")
+        series: opPieFnc.firstPieSeries("first")
       });
       // 饼图 级联
       this.myChart.on("click", () => {

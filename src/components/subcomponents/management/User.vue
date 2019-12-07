@@ -29,7 +29,7 @@
       </el-table>
     </el-row>
     <!-- 操作确认框 -->
-    <el-dialog title="提示" :visible.sync="delDialog" width="30%" v-dialogDrag >
+    <el-dialog title="提示" :visible.sync="delDialog" width="30%" v-dialogDrag>
       <span>用户删除需谨慎，确认要删除-{{ operationName }}-用户么？</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="delDialog=false">取 消</el-button>
@@ -38,46 +38,42 @@
     </el-dialog>
 
     <el-dialog title="添加管理员" :visible.sync="editDialog" width="30%" v-dialogDrag>
-      <el-form
-      ref="editMsg" label-width="100px" class="demo-ruleForm"
-    >
-      <el-form-item label="管理员" prop="name">
-        <el-input v-model="editMsg.name"></el-input>
-      </el-form-item>
-      <el-form-item label="初始密码" prop="name">
-        <el-input v-model="editMsg.password"></el-input>
-      </el-form-item>
-      <el-form-item label="性别" prop="name">
-        <el-input v-model="editMsg.sex"></el-input>
-      </el-form-item>
-      <el-form-item label="手机" prop="name">
-        <el-input v-model="editMsg.tel"></el-input>
-      </el-form-item>
-      <el-form-item label="邮箱" prop="name">
-        <el-input v-model="editMsg.email" placeholder="@"></el-input>
-      </el-form-item>
-      <el-form-item label="角色">
-        <el-select v-model="editMsg.role" placeholder="请选择角色">
-          <el-option label="超级管理员" value="superAdmin"></el-option>
-          <el-option label="管理员" value="admin"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="备注">
-        <el-input
-          type="textarea"
-          placeholder="请输入内容"
-          v-model="remarks"
-          maxlength="30"
-          show-word-limit
-        >
-        </el-input>
-      </el-form-item>
-      
-      <el-row style="text-align: center;">
-        <el-button type="success" size="small" @click="editTable">确定</el-button>
-        <el-button type="primary" size="small" @click="editDialog = false">取消</el-button>
-      </el-row>
-    </el-form>
+      <el-form ref="editMsg" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="管理员" prop="name">
+          <el-input v-model="editMsg.name"></el-input>
+        </el-form-item>
+        <el-form-item label="初始密码" prop="name">
+          <el-input v-model="editMsg.password"></el-input>
+        </el-form-item>
+        <el-form-item label="性别" prop="name">
+          <el-input v-model="editMsg.sex"></el-input>
+        </el-form-item>
+        <el-form-item label="手机" prop="name">
+          <el-input v-model="editMsg.tel"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="name">
+          <el-input v-model="editMsg.email" placeholder="@"></el-input>
+        </el-form-item>
+        <el-form-item label="角色">
+          <el-select v-model="editMsg.role" placeholder="请选择角色">
+            <el-option label="超级管理员" value="superAdmin"></el-option>
+            <el-option label="管理员" value="admin"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="备注">
+          <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="remarks"
+            maxlength="30"
+            show-word-limit
+          ></el-input>
+        </el-form-item>
+        <el-row style="text-align: center;">
+          <el-button type="success" size="small" @click="editTable">确定</el-button>
+          <el-button type="primary" size="small" @click="editDialog = false">取消</el-button>
+        </el-row>
+      </el-form>
     </el-dialog>
   </div>
 </template>
@@ -89,21 +85,20 @@ export default {
         {
           name: "admin",
           roleName: "超级管理员",
-          email: 'admin@mail.com',
-          time: '2014-6-11 11:11:42'
+          email: "admin@mail.com",
+          time: "2014-6-11 11:11:42"
         },
         {
           name: "zs",
           roleName: "管理员",
-          email: 'admin@mail.com',
-          time: '2014-6-11 11:11:42'
+          email: "admin@mail.com",
+          time: "2014-6-11 11:11:42"
         }
       ],
       delDialog: false,
       operationIndex: 0,
       operationName: "",
       editDialog: false,
-
       editMsg: {
         name: "",
         password: "",
@@ -111,7 +106,7 @@ export default {
         tel: "",
         email: "",
         role: "",
-        remarks: ''
+        remarks: ""
       }
     };
   },
@@ -135,15 +130,15 @@ export default {
       this.delDialog = false;
     },
     editTable() {
-      this.editMsg.describe="";
-      this.editMsg.identity="";
-      this.editMsg.name="";
+      this.editMsg.describe = "";
+      this.editMsg.identity = "";
+      this.editMsg.name = "";
       this.editDialog = false;
     },
-    delBacch(){
+    delBacch() {
       window.console.log("00");
     },
-    addRole(){
+    addRole() {
       this.editDialog = true;
     }
   }

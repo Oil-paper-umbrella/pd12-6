@@ -70,7 +70,7 @@ export default {
     this.requestBarChartData(this.checkedVal[1], this.checkedVal[0]);
   },
   mounted() {
-    // 页面路由 如果为 whole 则切换字体样式
+    // 页面路由 如果为 whole/bar 则获取宽高
     let nowPath = this.$route.path;
     if (nowPath == "/whole/bar") {
       this.setClient();
@@ -146,21 +146,22 @@ export default {
     },
     barCharts(data) {
       this.myChart = new optionPublicFun().init("bar-container");
+      let opBarFnc = new optionBarFun(data);
       // 数据渲染
       this.myChart.setOption({
-        legend: new optionBarFun(data).barLegend(
+        legend: opBarFnc.barLegend(
           this.barDataObj.weight,
           this.barDataObj.size
         ),
-        tooltip: new optionBarFun(data).barTooltip(
+        tooltip: opBarFnc.barTooltip(
           this.barDataObj.xAxisData,
           this.barDataObj.weight,
           this.barDataObj.size
         ),
-        grid: new optionBarFun(data).barGrid(),
-        xAxis: new optionBarFun(data).barXaxis(this.barDataObj.xAxisData),
-        yAxis: new optionBarFun(data).barYaxis(this.barDataObj.indexUnit),
-        series: new optionBarFun(data).barSeries(
+        grid: opBarFnc.barGrid(),
+        xAxis: opBarFnc.barXaxis(this.barDataObj.xAxisData),
+        yAxis: opBarFnc.barYaxis(this.barDataObj.indexUnit),
+        series: opBarFnc.barSeries(
           this.barDataObj.otherCityScore,
           this.barDataObj.pdCityScore,
           this.barDataObj.overAvg,

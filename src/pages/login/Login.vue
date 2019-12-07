@@ -5,8 +5,8 @@
   </div>
 </template>
 <script>
-import LoginForm from "./view/LoginForm.vue";
-import Particle from "./view/particles.vue";
+let LoginForm =()=> import("./view/LoginForm.vue");
+let Particle =()=> import("./view/particles.vue");
 export default {
   name: "login",
   components: {

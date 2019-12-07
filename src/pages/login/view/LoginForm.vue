@@ -122,7 +122,6 @@ export default {
           right,
         linear-gradient(-135deg, transparent 6px, rgb(157, 227, 255) 0) bottom
           left;
-
       background-size: 50% 50%;
       background-repeat: no-repeat;
     }

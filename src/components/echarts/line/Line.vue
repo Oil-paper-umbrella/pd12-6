@@ -41,7 +41,7 @@ export default {
   name: "echarts",
   data() {
     return {
-      clientHeight:"100%",
+      clientHeight: "100%",
       myChart: {},
       lineStyle: {
         weight: "bold",
@@ -59,12 +59,12 @@ export default {
     this.requestLineChartData(this.checkedVal[0]);
   },
   methods: {
-    setClient(){
+    setClient() {
       let clientHeight = document.documentElement
-              ? document.documentElement.clientHeight
-              : document.body.clientHeight;
-      console.log(clientHeight)
-      this.clientHeight = clientHeight-125+"px";
+        ? document.documentElement.clientHeight
+        : document.body.clientHeight;
+      console.log(clientHeight);
+      this.clientHeight = clientHeight - 125 + "px";
     },
     // 设置 折线图 样式
     setLineStyle(flag) {
@@ -94,40 +94,38 @@ export default {
     lineCharts(data) {
       let pd_this = this;
       let lineObj = this.lineStyle;
+      let opPubFnc = new optionPublicFun();
+      let daLineFnc = new dataLineFun(data);
+      let opLineFnc = new optionLineFun(data);
       let option = {
-        tooltip: new optionLineFun(data).lineTooltip(
-          lineObj.weight,
-          lineObj.size
-        ),
+        tooltip: opLineFnc.lineTooltip(lineObj.weight, lineObj.size),
         color: colors,
-        dataZoom: new optionLineFun(data).lineDataZoom(lineObj.zoomHeight),
-        legend: new optionLineFun(data).lineLegend(
+        dataZoom: opLineFnc.lineDataZoom(lineObj.zoomHeight),
+        legend: opLineFnc.lineLegend(
           lineObj.weight,
           lineObj.size,
           lineObj.orientData,
           selectedCity
         ),
-        xAxis: new optionLineFun(data).lineXaxis(
-          new dataLineFun(data).getAllTimes(),
-          new dataLineFun(data).getIndexCycle()
+        xAxis: opLineFnc.lineXaxis(
+          daLineFnc.getAllTimes(),
+          daLineFnc.getIndexCycle()
         ),
-        yAxis: new optionLineFun(data).lineYaxis(
-          new dataPublicFun(data).getUnit("line")
-        ),
-        series: new dataLineFun(data).getLineData()
+        yAxis: opLineFnc.lineYaxis(new dataPublicFun(data).getUnit("line")),
+        series: daLineFnc.getLineData()
       };
-      this.myChart = new optionPublicFun().init("line-container");
+      this.myChart = opPubFnc.init("line-container");
       this.myChart.setOption(option);
       // legend发生变化事件
       this.myChart.on("legendselectchanged", function(params) {
-        let stack = new optionPublicFun().getStack(params);
+        let stack = opPubFnc.getStack(params);
         if (stack == 4) {
           pd_this.$message.warning({
             showClose: true,
             message: "糟糕，数据太多了，眼花缭乱的。请至多对三个地市进行比较"
           });
           pd_this.myChart.setOption(
-            new optionPublicFun().initSelectedCity(
+            opPubFnc.initSelectedCity(
               params,
               defaultCityName,
               selectedCity,
@@ -137,9 +135,7 @@ export default {
         }
       });
     },
-    legendChange(){
-      
-    }
+    legendChange() {}
   },
   mounted() {
     let nowPath = this.$route.path;

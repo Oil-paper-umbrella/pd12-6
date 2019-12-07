@@ -110,7 +110,8 @@ export default {
     radarCharts() {
       let radarObj = this.radarLegendStyle;
       let pd_this = this;
-      this.myChart = new optionPublicFun().init("radar-container");
+      let opPubFnc = new optionPublicFun();
+      this.myChart = opPubFnc.init("radar-container");
       let option = {
         legend: new optionRadarFun().radarLegend(
           radarObj.weight,
@@ -155,13 +156,13 @@ export default {
       this.myChart.setOption(option);
       // legend 变化事件
       this.myChart.on("legendselectchanged", function(params) {
-        let stack = new optionPublicFun().getStack(params);
+        let stack = opPubFnc.getStack(params);
         if (stack == 4) {
           pd_this.$message.warning({
             showClose: true,
             message: "糟糕，数据太多了，眼花缭乱的。请至多对三个地市进行比较"
           });
-          let newOption = new optionPublicFun().initSelectedCity(
+          let newOption = opPubFnc.initSelectedCity(
             params,
             defaultCityName,
             selectedCity,

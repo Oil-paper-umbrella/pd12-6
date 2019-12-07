@@ -4,7 +4,6 @@ class optionMapFun {
     let tooltip = {
       trigger: 'item',
       formatter: '{b}<br/>得分：{c} ',
-      // textStyle: textStyle("bold",14)
       textStyle: new optionPublicFun().textStyle("normal"),
     }
     return tooltip;

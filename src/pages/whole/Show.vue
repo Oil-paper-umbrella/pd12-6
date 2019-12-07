@@ -142,6 +142,14 @@ a:active {
 }
 #show {
   background: #111739;
+  .el-icon-aliquanping1 {
+    // 全屏 icon 样式
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
   .clearfix:before,
   .clearfix:after {
     display: table;
@@ -278,22 +286,22 @@ a:active {
     overflow: inherit;
   }
   .pie {
-    height: 450px;
+    height: 420px;
   }
   .trend {
-    height: 300px;
+    height: 330px;
   }
   .map {
-    height: 300px;
+    height: 350px;
   }
   .bar {
-    height: 450px;
+    height: 400px;
   }
   .line {
-    height: 450px;
+    height: 375px;
   }
   .radar {
-    height: 300px;
+    height: 375px;
   }
 }
 </style>
